@@ -22,7 +22,7 @@ public class RestTemplateController {
     }
 
     @GetMapping
-    public HttpHeaders getFirstSessionId(HttpHeaders headers) {
+    public HttpHeaders getSessionId(HttpHeaders headers) {
         ResponseEntity<String> response = restTemplate.getForEntity(taskURL, String.class);
         sessionId = response.getHeaders().getFirst("Set-Cookie");
         headers.set("Cookie", sessionId);

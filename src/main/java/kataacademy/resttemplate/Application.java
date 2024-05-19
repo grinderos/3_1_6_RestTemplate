@@ -21,13 +21,16 @@ public class Application {
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
 
-        headers = controller.getFirstSessionId(headers);
+        headers = controller.getSessionId(headers);
         System.out.println("Cookie после добавления:\n" + headers.get("Cookie"));
 
         HttpEntity<Object> entity = new HttpEntity<>(new User(3, "James", "Brown", 23), headers);
+
         controller.getFirstPhrase(entity);
         entity = new HttpEntity<>(new User(3, "Thomas", "Shelby", 23), headers);
+
         controller.getSecondPhrase(entity);
+
         controller.getThirdPhrase(entity);
 
         System.out.println("Ответ:\n"+controller.key.toString());
