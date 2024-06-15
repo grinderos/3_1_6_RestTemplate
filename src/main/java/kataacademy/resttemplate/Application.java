@@ -21,7 +21,7 @@ public class Application {
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
 
-        headers = controller.getSessionId(headers);
+        headers = controller.getSessionId(headers); //подшиваем в заголовок cookie с sessionId
         System.out.println("Cookie после добавления:\n" + headers.get("Cookie"));
 
         HttpEntity<Object> entity = new HttpEntity<>(new User(3, "James", "Brown", 23), headers);

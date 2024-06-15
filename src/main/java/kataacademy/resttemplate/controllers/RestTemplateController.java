@@ -30,20 +30,19 @@ public class RestTemplateController {
     }
 
     public void getFirstPhrase(HttpEntity<Object> entity) {
-        String response = restTemplate
-                .postForObject(taskURL, entity, String.class);
+        String response = restTemplate.postForObject(taskURL, entity, String.class);
         key.append(response);
     }
 
     public void getSecondPhrase(HttpEntity<Object> entity){
-        ResponseEntity<String> response = restTemplate
-                .exchange(taskURL, HttpMethod.PUT, entity, String.class);
+        ResponseEntity<String> response =
+                restTemplate.exchange(taskURL, HttpMethod.PUT, entity, String.class);
         key.append(response.getBody());
     }
 
     public void getThirdPhrase(HttpEntity<Object> entity){
-        ResponseEntity<String> response = restTemplate
-                .exchange(taskURL+"/3", HttpMethod.DELETE, entity, String.class);
+        ResponseEntity<String> response =
+                restTemplate.exchange(taskURL+"/3", HttpMethod.DELETE, entity, String.class);
         key.append(response.getBody());
     }
 }
